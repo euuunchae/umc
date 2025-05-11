@@ -20,10 +20,23 @@ public class Store extends BaseEntity {
 
     private String name;
 
+    private Float rating;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    private List<Review> revuewList = new ArrayList<>();
+    private List<Review> reviewList = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "id= " + id +
+                ", name = '" +  name + '\'' +
+                ", rating = " + rating +
+                ", region = " + (region != null ? region.getName() : "N/A") +
+                '}';
+
+    }
 }

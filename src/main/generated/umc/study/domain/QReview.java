@@ -33,7 +33,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public final QMember member;
 
-    public final NumberPath<Integer> rating = createNumber("rating", Integer.class);
+    public final NumberPath<Float> rating = createNumber("rating", Float.class);
 
     public final QStore store;
 
