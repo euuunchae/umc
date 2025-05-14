@@ -9,3 +9,5 @@ public interface StoreQueryService {
     Optional<Store> findStore(Long id);
     List<Store> findStoreByNameAndScore(String name, Float rating);
 }
+
+

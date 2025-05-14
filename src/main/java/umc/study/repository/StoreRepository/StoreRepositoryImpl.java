@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class StoreRepositoryImpl implements StoreRepositoryCustom{
+
     private final JPAQueryFactory jpaQueryFactory;
     private final QStore store = QStore.store;
 
@@ -26,6 +27,9 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom{
         if (rating != null) {
             predicate.and(store.rating.goe(4.0f));
         }
-        return jpaQueryFactory.selectFrom(store).where(predicate).fetch();
+        return jpaQueryFactory.
+                selectFrom(store).
+                where(predicate).
+                fetch();
     }
 }
