@@ -25,6 +25,9 @@ import java.util.Optional;
 @Slf4j
 @RestControllerAdvice(annotations = RestController.class)
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
+
+
+
     @ExceptionHandler
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
         String errorMessage = e.getConstraintViolations().stream()

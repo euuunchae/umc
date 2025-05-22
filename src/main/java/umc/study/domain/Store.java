@@ -18,6 +18,7 @@ public class Store extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     private Float rating;
@@ -38,5 +39,10 @@ public class Store extends BaseEntity {
                 ", region = " + (region != null ? region.getName() : "N/A") +
                 '}';
 
+    }
+
+    //생성자 메서드
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }
