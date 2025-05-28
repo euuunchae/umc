@@ -24,5 +24,4 @@ public class ReviewImage {
     private Review review;
 
 
-
 }

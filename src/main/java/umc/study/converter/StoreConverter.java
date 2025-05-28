@@ -1,7 +1,7 @@
 package umc.study.converter;
 
-import umc.study.apiPayload.code.StoreRequestDTO;
-import umc.study.apiPayload.code.StoreResponseDTO;
+import umc.study.web.dto.StoreRequestDTO;
+import umc.study.web.dto.StoreResponseDTO;
 import umc.study.domain.Region;
 import umc.study.domain.Store;
 

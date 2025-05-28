@@ -1,4 +1,4 @@
-package umc.study.apiPayload.code;
+package umc.study.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,15 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-public class StoreResponseDTO {
+public class MemberResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class CreateStoreResultDTO{
-        Long storeId;
-        String regionName;
+    public static class JoinResultDTO{
+        Long memberId;
         LocalDateTime createdAt;
 
     }

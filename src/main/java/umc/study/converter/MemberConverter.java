@@ -1,7 +1,7 @@
 package umc.study.converter;
 
-import umc.study.apiPayload.code.MemberRequestDTO;
-import umc.study.apiPayload.code.MemberResponseDTO;
+import umc.study.web.dto.MemberRequestDTO;
+import umc.study.web.dto.MemberResponseDTO;
 import umc.study.domain.Member;
 import umc.study.domain.enums.Gender;
 
@@ -36,6 +36,7 @@ public class MemberConverter {
         return Member.builder()
                 .gender(gender)
                 .name(request.getName())
+                .phone(request.getPhone())
                 .memberFoodList(new ArrayList<>())
                 .build();
     }

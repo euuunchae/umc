@@ -53,7 +53,7 @@ tasks.named('test') {
 }
 
 /**
- * QueryDSL Build Options
+ * Querydsl 설정부
  */
 def querydslDir = "src/main/generated"
 
@@ -68,4 +68,3 @@ tasks.withType(JavaCompile).configureEach {
 clean.doLast {
 	file(querydslDir).deleteDir()
 }
-
