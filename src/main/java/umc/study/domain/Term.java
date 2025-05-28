@@ -22,8 +22,6 @@ public class Term extends BaseEntity {
     @Column(nullable = false, length = 256)
     private String Content;
 
-    private Boolean select;
-
     @OneToMany(mappedBy = "term", cascade = CascadeType.ALL)
     private List<MemberAgree> memberAgreeList = new ArrayList<>();
 }

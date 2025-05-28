@@ -33,12 +33,11 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
 	// queryDSL
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
@@ -54,7 +53,7 @@ tasks.named('test') {
 }
 
 /**
- * QueryDSL Build Options
+ * Querydsl 설정부
  */
 def querydslDir = "src/main/generated"
 
@@ -69,4 +68,3 @@ tasks.withType(JavaCompile).configureEach {
 clean.doLast {
 	file(querydslDir).deleteDir()
 }
-
