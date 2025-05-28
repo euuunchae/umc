@@ -5,19 +5,20 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class StoreResponseDTO {
+public class MissionResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class AddStoreResultDTO{
-        Long storeId;
-        String storeName;
-        Float rating;
-        String regionName;
+    public static class AddMissionResultDTO{
+        Long missionId;
+        String content;
+        Integer reward;
+        LocalDate deadline;
         LocalDateTime createdAt;
 
     }

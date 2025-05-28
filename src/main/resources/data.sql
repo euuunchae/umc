@@ -11,11 +11,11 @@ VALUES (1, 'Store 1',  4.5, 1, NOW(), NOW()),
        (5, '요아정',  3.2, 2, NOW(), NOW()),
        (6, '요아정', 4.5, 3, NOW(), NOW());
 
-INSERT INTO mission (id, content, reward, deadline, created_at, updated_at)
-VALUES (1, 'Store 1-미션 1', 1, '2025-05-11', NOW(), NOW()),
-       (2, 'Store 1-미션 2', 1, '2025-05-12',  NOW(), NOW()),
-       (3, 'Store 2-미션 1', 1, '2025-05-13', NOW(), NOW()),
-       (4, 'Store 3-미션 1', 1, '2025-05-14', NOW(), NOW());
+INSERT INTO mission (id, content, reward, store_id, deadline, created_at, updated_at)
+VALUES (1, 'Store 1-미션 1', 1, 1,'2025-05-11', NOW(), NOW()),
+       (2, 'Store 1-미션 2', 1, 2,'2025-05-12',  NOW(), NOW()),
+       (3, 'Store 2-미션 1', 1, 3,'2025-05-13', NOW(), NOW()),
+       (4, 'Store 3-미션 1', 1, 4,'2025-05-14', NOW(), NOW());
 
 INSERT INTO member (id, name, email, phone, birth, gender, created_at, updated_at)
 VALUES (1, '홍길동', 'hong@gmail.com', '010-1111-1111', '2000-01-01', 'MALE', NOW(), NOW()),

@@ -11,11 +11,4 @@ import umc.study.repository.MemberRepository.MemberRepository;
 @RequiredArgsConstructor
 public class MemberQueryServiceImpl implements MemberQueryService {
 
-    private final MemberRepository memberRepository;
-
-    @Override
-    public Member getHardCodedMember() {
-        return memberRepository.findById(1L)
-                .orElseThrow(() -> new GeneralException(ErrorStatus.MEMBER_NOT_FOUND));
-    }
 }

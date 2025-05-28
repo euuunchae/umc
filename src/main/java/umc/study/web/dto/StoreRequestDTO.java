@@ -7,14 +7,16 @@ import lombok.Getter;
 public class StoreRequestDTO {
 
     @Getter
-    public static class CreateStoreDTO{
-        @NotBlank
-        private String name;
+    public static class AddStoreDTO{
+
+        @NotBlank(message = "가게 이름은 필수입니다.")
+        String name;
+
+        @NotNull(message = "별점은 필수입니다.")
+        Float rating;
 
         @NotNull
-        private Float rating;
+        int regionId;
 
-        @NotNull
-        private Long regionId;
     }
 }
