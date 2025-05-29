@@ -29,8 +29,11 @@ public enum ErrorStatus implements BaseErrorCode {
     // 8주차 미션
     FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FoodCategoryRepository4001", "음식 카테고리가 없습니다."),
     REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4001", "해당 지역이 없습니다."),
+    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001","해당 가게가 없습니다."),
 
-    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001","해당 가게가 없습니다.") ;
+    //9주차 페이징 관련 예외
+    PAGE_OUT_OF_RANGE(HttpStatus.BAD_REQUEST, "PAGING4001","페이지는 1 이상이어야 합니다." );
+
 
     private final HttpStatus httpStatus;
     private final String code;

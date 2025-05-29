@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.*;
 import umc.study.apiPayload.ApiResponse;
 import umc.study.converter.ReviewConverter;
 import umc.study.converter.StoreConverter;
+import umc.study.domain.Member;
 import umc.study.domain.Review;
 import umc.study.service.ReviewService.ReviewCommandService;
 import umc.study.service.ReviewService.ReviewQueryService;
 import umc.study.validation.annotation.ExistStore;
+import umc.study.validation.annotation.ValidPage;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 
@@ -58,4 +61,6 @@ public class ReviewRestController {
         return ApiResponse.onSuccess(ReviewConverter.reviewPreViewListDTO(reviewList));
 
     }
+
+
 }

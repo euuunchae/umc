@@ -12,23 +12,7 @@ import umc.study.domain.Store;
 import umc.study.repository.ReviewRepository.ReviewRepository;
 import umc.study.repository.StoreRepository.StoreRepository;
 import umc.study.web.dto.ReviewRequestDTO;
-
-@Service
-@RequiredArgsConstructor
 public class ReviewCommandServiceImpl implements ReviewCommandService {
 
-    private final ReviewRepository reviewRepository;
-    private final StoreRepository storeRepository;
-
-    @Override
-    @Transactional
-    public Review addReview(Long storeId, ReviewRequestDTO.AddReviewDTO request) {
-        Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
-
-        Review review = ReviewConverter.toReview(request,store);
-
-        return reviewRepository.save(review);
-    }
 
 }

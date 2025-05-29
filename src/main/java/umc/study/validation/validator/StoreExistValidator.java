@@ -4,9 +4,7 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.repository.StoreRepository.StoreRepository;
-import umc.study.validation.annotation.ExistCategories;
 import umc.study.validation.annotation.ExistStore;
 
 import java.util.List;
@@ -20,9 +18,7 @@ public class StoreExistValidator implements ConstraintValidator<ExistStore, Long
 
     @Override
     public boolean isValid(Long storeId, ConstraintValidatorContext context) {
-        boolean isValid = storeRepository.existsById(storeId);
-        if (storeId == null) return false;
-        return isValid;
+        return storeRepository.existsById(storeId);
     }
 
 }
