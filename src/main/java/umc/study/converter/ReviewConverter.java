@@ -29,28 +29,6 @@ public class ReviewConverter {
                 .build();
     }
 
-//리뷰 조회하기
-    public static ReviewResponseDTO.ReviewPreViewDTO reviewPreViewDTO(Review review){
-        return ReviewResponseDTO.ReviewPreViewDTO.builder()
-                .ownerNickname(review.getMember().getName())
-                .rating(review.getRating())
-                .createdAt(review.getCreatedAt().toLocalDate())
-                .content(review.getContent())
-                .build();
-    }
-    public static ReviewResponseDTO.ReviewPreViewListDTO reviewPreViewListDTO(Page<Review> reviewList){
 
-        List<ReviewResponseDTO.ReviewPreViewDTO> reviewPreViewDTOList = reviewList.getContent().stream()
-                .map(ReviewConverter::reviewPreViewDTO).collect(Collectors.toList());
-
-        return ReviewResponseDTO.ReviewPreViewListDTO.builder()
-                .isLast(reviewList.isLast())
-                .isFirst(reviewList.isFirst())
-                .totalPage(reviewList.getTotalPages())
-                .totalElements(reviewList.getTotalElements())
-                .listSize(reviewPreViewDTOList.size())
-                .reviewList(reviewPreViewDTOList)
-                .build();
-    }
 }
 

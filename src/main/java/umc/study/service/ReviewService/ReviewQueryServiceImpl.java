@@ -6,25 +6,25 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.study.domain.Member;
 import umc.study.domain.Review;
-import umc.study.domain.Store;
+import umc.study.repository.MemberRepository.MemberRepositoryCustom;
 import umc.study.repository.ReviewRepository.ReviewRepository;
-import umc.study.repository.StoreRepository.StoreRepository;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ReviewQueryServiceImpl implements ReviewQueryService {
-
     private final ReviewRepository reviewRepository;
-    private final StoreRepository storeRepository;
+    private final MemberRepositoryCustom memberRepositoryCustom;
 
     @Override
-    public Page<Review> getReviewList(Long StoreId, Integer page){
-        Store store = storeRepository.findById(StoreId).get();
+    @Transactional
+    public Page<Review> getReviewList(Long MemberId, Integer page) {
+        Member member = memberRepositoryCustom.findMemberInfoById(MemberId);
 
-        Page<Review> StorePage = reviewRepository.findAllByStore(store, PageRequest.of(page, 10));
-        return StorePage;
+        Page<Review> reviewPage = reviewRepository.findAllByMember(member, PageRequest.of(page -1, 10));
+        return reviewPage;
     }
 
 

@@ -7,6 +7,7 @@ import umc.study.apiPayload.exception.GeneralException;
 @Getter
 public class FoodCategoryHandler extends GeneralException {
     public FoodCategoryHandler(ErrorStatus errorStatus) {
+
         super(errorStatus);
     }
 }
