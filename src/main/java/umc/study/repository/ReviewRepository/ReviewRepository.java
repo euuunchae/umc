@@ -11,5 +11,4 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<Review> findAllByStore(Store store, PageRequest pageRequest);
     Page<Review> findAllByMember(Member member, PageRequest pageRequest);
 
-    Member member(Member member);
 }

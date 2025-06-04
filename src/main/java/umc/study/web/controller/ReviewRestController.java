@@ -31,7 +31,7 @@ public class ReviewRestController {
 private final MemberRepositoryCustom memberRepositoryCustom;
     private final ReviewQueryService reviewQueryService;
 
-    // 특정 가게의 리뷰 목록 조회하기
+    // 내가 작성한 리뷰 목록 조회하기
     @GetMapping("/")
     @Operation(summary = "회원 리뷰 목록 조회 API",description = "로그인 한 사용자가 작성한 리뷰들의 목록을 조회하는 API이며, 페이징을 포함합니다. query String 으로 page 번호를 주세요")
     @ApiResponses(value = {

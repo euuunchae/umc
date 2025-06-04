@@ -1,8 +1,10 @@
 package umc.study.converter;
 
 import org.springframework.data.domain.Page;
+import umc.study.domain.Mission;
 import umc.study.domain.Region;
 import umc.study.domain.Review;
+import umc.study.web.dto.MissionResponseDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 import umc.study.web.dto.StoreRequestDTO;
 import umc.study.web.dto.StoreResponseDTO;
@@ -53,6 +55,31 @@ public class StoreConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreViewDTOList.size())
                 .reviewList(reviewPreViewDTOList)
+                .build();
+    }
+
+
+    //미션 조회하기
+    public static MissionResponseDTO.MissionPreViewDTO missionPreViewDTO(Mission mission){
+        return MissionResponseDTO.MissionPreViewDTO.builder()
+                .missionId(mission.getId())
+                .content(mission.getContent())
+                .deadline(mission.getDeadline())
+                .createdAt(mission.getCreatedAt())
+                .build();
+    }
+    public static MissionResponseDTO.MissionPreViewListDTO missionPreViewListDTO(Page<Mission> missionList){
+
+        List<MissionResponseDTO.MissionPreViewDTO> missionPreViewDTOList = missionList.getContent().stream()
+                .map(StoreConverter::missionPreViewDTO).collect(Collectors.toList());
+
+        return MissionResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
                 .build();
     }
 }
