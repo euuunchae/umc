@@ -23,6 +23,7 @@ import umc.study.service.ReviewService.ReviewCommandService;
 import umc.study.service.StoreService.StoreCommandService;
 import umc.study.service.StoreService.StoreQueryService;
 import umc.study.validation.annotation.ExistStore;
+import umc.study.validation.annotation.ValidPage;
 import umc.study.web.dto.*;
 
 @RestController
@@ -56,6 +57,13 @@ public class StoreRestController {
 
     //가게에 미션 추가하기
     @PostMapping("/{storeId}/missions")
+    @Operation(summary = "가게에 미션 추가하기 API",description = "가게에 미션을 추가하는 API입니다.")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
     public ApiResponse<MissionResponseDTO.AddMissionResultDTO> addMission(
             @PathVariable Long storeId,
             @io.swagger.v3.oas.annotations.parameters.RequestBody @Valid MissionRequestDTO.AddMissionDTO request) {
@@ -98,10 +106,13 @@ public class StoreRestController {
     @Parameters({
             @Parameter(name="storeId", description = "가게의 아이디, path variable 입니다!")
     })
-    public ApiResponse<ReviewResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistStore @PathVariable(name = "storeId") Long storeId, @RequestParam(name = "page") Integer page) {
+    public ApiResponse<MissionResponseDTO.MissionPreViewListDTO> getMissionList(
+            @ExistStore @PathVariable(name = "storeId") Long storeId, 
+            @ValidPage @RequestParam(name = "page") Integer page) {
+        
         storeQueryService.getReviewList(storeId, page);
-        Page<Review> reviewList = storeQueryService.getReviewList(storeId, page);
-        return ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(reviewList));
+        Page<Mission> missionList = storeQueryService.getMissionList(storeId, page);
+        return ApiResponse.onSuccess(StoreConverter.missionPreViewListDTO(missionList));
 
     }
 }
