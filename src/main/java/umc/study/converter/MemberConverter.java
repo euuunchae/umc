@@ -36,9 +36,13 @@ public class MemberConverter {
         return Member.builder()
                 .gender(gender)
                 .name(request.getName())
+                .email(request.getEmail())
+                .password(request.getPassword())
                 .phone(request.getPhone())
                 .memberFoodList(new ArrayList<>())
+                .role(request.getRole())
                 .build();
+
     }
 
 }
